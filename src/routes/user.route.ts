@@ -1,15 +1,11 @@
 import { Router } from "express";
 import USER from "../models/user.model";
+import { getUser, getUsers } from "../controller/user.controller";
+import authorization from "../middleware/authorization.middleware";
 
 const userRouter = Router();
 
-userRouter.post("/sign-up", async (req, res) => {
-  const { email, mobile, nid } = req.body;
-  const isExist = await USER.find({ email, mobile, nid });
-  if (isExist) {
-    console.log(isExist);
-  }
-  res.json({ message: "User signed up successfully" });
-});
+userRouter.get("/", getUsers);
+userRouter.get("/:id", authorization, getUser);
 
 export default userRouter;
