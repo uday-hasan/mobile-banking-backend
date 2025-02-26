@@ -8,5 +8,5 @@
     "noEmit": true,
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src", "config"]
 }
